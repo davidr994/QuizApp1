@@ -8,5 +8,6 @@
     <orderEntry type="jdk" jdkName="14" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="javafx-swt" level="application" />
+    <orderEntry type="library" name="sqlite-jdbc-3.30.11" level="application" />
   </component>
 </module>

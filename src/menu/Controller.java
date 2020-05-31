@@ -2,26 +2,22 @@ package menu;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.stage.PopupWindow;
 import javafx.stage.Stage;
-
-import java.awt.*;
+import javafx.scene.control.Button;
 import java.io.IOException;
 
 public class Controller {
 
     @FXML
     void startButton(ActionEvent event) {
-
       Button button = (Button) event.getSource();
       Stage primaryStage = (Stage) button.getScene().getWindow();
       primaryStage.close();
-
-
 
        try{
            goToCategoryOverview();
@@ -31,17 +27,13 @@ public class Controller {
        }
     }
 
-
-
     @FXML
     void quitButton(ActionEvent event) {
-
         Platform.exit();
     }
 
     @FXML
     void scoreButton(ActionEvent event) {
-
         System.out.println("score");
     }
 
@@ -61,9 +53,6 @@ public class Controller {
         stage2.show();
 
     }
-
-
-
-    }
+}
 
 

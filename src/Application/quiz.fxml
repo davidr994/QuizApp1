@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="348.0" prefWidth="295.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.ControllerQuiz">
+   <children>
+      <Label fx:id="Question" alignment="CENTER" layoutX="97.0" layoutY="14.0" prefHeight="68.0" prefWidth="102.0" text="Question:">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" layoutX="35.0" layoutY="94.0" prefHeight="100.0" prefWidth="226.0" spacing="60.0">
+         <children>
+            <Button fx:id="YES" maxWidth="100.0" mnemonicParsing="false" onAction="#answerButton" prefHeight="40.0" prefWidth="100.0" text="YES" textFill="#0ab504">
+               <font>
+                  <Font size="19.0" />
+               </font></Button>
+            <Button fx:id="NO" maxWidth="100.0" mnemonicParsing="false" onAction="#answerButton" prefHeight="40.0" prefWidth="100.0" text="NO" textFill="#e80606">
+               <font>
+                  <Font size="19.0" />
+               </font></Button>
+         </children>
+      </HBox>
+      <Separator layoutX="17.0" layoutY="236.0" prefHeight="16.0" prefWidth="262.0" />
+      <HBox layoutX="27.0" layoutY="252.0" prefHeight="68.0" prefWidth="241.0" spacing="20.0">
+         <children>
+            <Label fx:id="questionCounter" prefHeight="22.0" prefWidth="165.0" text="1 - 100">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <VBox prefHeight="100.0" prefWidth="143.0">
+               <children>
+                  <Label fx:id="score" text="Score: 0">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Highscore" text="Highscore: 0">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox layoutX="20.0" layoutY="352.0" prefHeight="16.0" prefWidth="255.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+   </children>
+</AnchorPane>

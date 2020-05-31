@@ -4,17 +4,21 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="250.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.Controller">
    <children>
-      <VBox layoutX="25.0" layoutY="25.0" prefHeight="200.0" prefWidth="100.0">
+      <VBox layoutX="25.0" layoutY="11.0" prefHeight="228.0" prefWidth="100.0">
          <children>
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="101.0" text="QUIZ APP" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="101.0" text="QUIZ APP" textOverrun="WORD_ELLIPSIS" underline="true">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="25.0">
                <children>
-                  <Button alignment="CENTER" maxWidth="90.0" mnemonicParsing="false" onAction="#startButton" prefHeight="40.0" text="start" />
-                  <Button alignment="CENTER" maxWidth="90.0" mnemonicParsing="false" onAction="#quitButton" prefHeight="40.0" text="quit" />
-                  <Button alignment="CENTER" maxWidth="90.0" mnemonicParsing="false" onAction="#scoreButton" prefHeight="40.0" text="score" />
+                  <Button alignment="CENTER" maxWidth="90.0" mnemonicParsing="false" onAction="#startButton" prefHeight="40.0" text="START" textFill="#0ccd1c" />
+                  <Button alignment="CENTER" maxWidth="90.0" mnemonicParsing="false" onAction="#quitButton" prefHeight="40.0" text="QUIT" textFill="#d70a0a" />
+                  <Button alignment="CENTER" maxWidth="90.0" mnemonicParsing="false" onAction="#scoreButton" prefHeight="40.0" text="SCORE" textFill="#1a07ee" />
                </children>
             </VBox>
          </children>
