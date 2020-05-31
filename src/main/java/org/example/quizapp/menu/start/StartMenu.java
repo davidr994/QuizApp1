@@ -1,17 +1,18 @@
-package menu;
+package org.example.quizapp.menu.start;
 
 import javafx.application.Platform;
-import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.stage.PopupWindow;
-import javafx.stage.Stage;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+
+import java.io.File;
 import java.io.IOException;
 
-public class Controller {
+public class StartMenu {
 
     @FXML
     void startButton(ActionEvent event) {
@@ -43,7 +44,7 @@ public class Controller {
 
         FXMLLoader fxmlLoader = new FXMLLoader();
 
-        Pane root = (Pane) fxmlLoader.load(getClass().getResource("/menu2/menu2.fxml").openStream());
+        Pane root = (Pane) fxmlLoader.load(new File("src/main/java/org/example/quizapp/menu/category/category-menu.fxml").toURI().toURL());
 
         Scene scene2 = new Scene(root);
 

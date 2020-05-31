@@ -1,18 +1,23 @@
-package menu;
+package org.example.quizapp;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+import java.io.File;
+import java.nio.file.Paths;
 
-   @Override
+public class QuizApplication extends Application {
+
+    @Override
     public void start(Stage primaryStage) {
 
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/menu/menu.fxml"));
+            Parent root = FXMLLoader.load(new File("src/main/java/org/example/quizapp/menu/start/menu.fxml").toURI().toURL());
 
             Scene scene = new Scene(root);
 
@@ -25,4 +30,9 @@ public class Main extends Application {
         }
 
     }
+
+    public static void main(String[] args) {
+        launch();
+    }
+
 }
