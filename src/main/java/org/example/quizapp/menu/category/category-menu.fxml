@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.quizapp.menu.category.CategoryMenu">
    <children>
       <VBox layoutX="13.0" layoutY="15.0" prefHeight="385.0" prefWidth="275.0">
@@ -39,6 +44,12 @@
                <children>
                   <Button fx:id="OK" mnemonicParsing="false" onAction="#OKButton" prefWidth="70.0" text="OK" />
                   <Button fx:id="abort" mnemonicParsing="false" onAction="#abortButton" prefWidth="70.0" text="abort" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="24.0" prefWidth="275.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="103.0" text="DB status:" />
+                  <Circle fx:id="dbstatuslight" fill="#ff2d1f" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
                </children>
             </HBox>
          </children>

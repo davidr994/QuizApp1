@@ -9,7 +9,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import org.example.quizapp.dbUtil.Database;
+import org.example.quizapp.menu.questions.Question;
+import org.example.quizapp.menu.questions.QuestionBank;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,6 +51,9 @@ public class CategoryMenu implements Initializable {
         private HBox statusHBox;
 
         @FXML
+        private Circle dbstatuslight;
+
+        @FXML
         private Button OK;
 
         @FXML
@@ -53,6 +61,11 @@ public class CategoryMenu implements Initializable {
 
         // --------- Arraylist --------
         List<String> categoryList = new ArrayList<String>();
+
+        List<Question> quizQuestionList = new ArrayList<>();
+
+        Database database = new Database();
+        QuestionBank questionBank = new QuestionBank();
 
         @FXML
         void ComputerButton(ActionEvent event) {
@@ -95,6 +108,16 @@ public class CategoryMenu implements Initializable {
         @FXML
         void OKButton(ActionEvent event) {
 
+                for (String category: categoryList) {
+                        questionBank.loadCategoryQuestions(database.getStatement(), category);
+                }
+
+                quizQuestionList = questionBank.getQuestionList();
+
+                for (Question question: quizQuestionList) {
+                        System.out.println("ID: " + question.getQuestion_id());
+                }
+
                 Button okButton = (Button) event.getSource();
                 Stage stage = (Stage) okButton.getScene().getWindow();
                 stage.close();
@@ -121,6 +144,15 @@ public class CategoryMenu implements Initializable {
         @Override
         public void initialize(URL location, ResourceBundle resources) {
                 statusHBox.setDisable(true);
+
+                //Database connection
+                boolean dbConnection = database.open();
+
+                if(dbConnection) {
+                        dbstatuslight.setFill(Color.GREEN);
+                } else {
+                        dbstatuslight.setFill(Color.RED);
+                }
         }
 
         //---------- methods ----------
