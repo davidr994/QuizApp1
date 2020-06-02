@@ -8,7 +8,7 @@ import java.util.List;
 
 public class QuestionBank {
 
-    private List<Question> questionList = new ArrayList<>();
+    private ArrayList<Question> questionList = new ArrayList<>();
 
     public void loadCategoryQuestions (Statement statement, String categoryTable) {
         String QUERY_DATA_FROM_TABLE = "SELECT * FROM " + categoryTable;
@@ -43,6 +43,6 @@ public class QuestionBank {
     }
 
     public void setQuestionList(List<Question> questionList) {
-        this.questionList = questionList;
+        this.questionList = (ArrayList<Question>) questionList;
     }
 }

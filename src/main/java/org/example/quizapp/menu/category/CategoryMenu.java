@@ -12,12 +12,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import org.example.quizapp.controller.ControllerQuiz;
 import org.example.quizapp.dbUtil.Database;
 import org.example.quizapp.menu.questions.Question;
 import org.example.quizapp.menu.questions.QuestionBank;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,9 +62,9 @@ public class CategoryMenu implements Initializable {
         private Button abort;
 
         // --------- Arraylist --------
-        List<String> categoryList = new ArrayList<String>();
+        ArrayList<String> categoryList = new ArrayList<String>();
 
-        List<Question> quizQuestionList = new ArrayList<>();
+        ArrayList<Question> quizQuestionList = new ArrayList<>();
 
         Database database = new Database();
         QuestionBank questionBank = new QuestionBank();
@@ -112,7 +114,7 @@ public class CategoryMenu implements Initializable {
                         questionBank.loadCategoryQuestions(database.getStatement(), category);
                 }
 
-                quizQuestionList = questionBank.getQuestionList();
+                quizQuestionList = (ArrayList<Question>) questionBank.getQuestionList();
 
                 for (Question question: quizQuestionList) {
                         System.out.println("ID: " + question.getQuestion_id());
@@ -170,7 +172,13 @@ public class CategoryMenu implements Initializable {
 
                 FXMLLoader fxmlLoader = new FXMLLoader();
 
-                AnchorPane root = (AnchorPane) fxmlLoader.load(new File("src/main/java/org/example/quizapp/controller/quiz.fxml").toURI().toURL());
+                 AnchorPane root = (AnchorPane) fxmlLoader.load(new File("src/main/java/org/example/quizapp/controller/quiz.fxml").toURI().toURL());
+                //AnchorPane root = (AnchorPane)  fxmlLoader.load(getClass().getClassLoader().getResource("controller/quiz.fxml").openStream());
+                //AnchorPane root = (AnchorPane)  fxmlLoader.load();
+
+                ControllerQuiz controllerQuiz = fxmlLoader.getController();
+                controllerQuiz.setQuestions((ArrayList<Question>) quizQuestionList);
+
 
                 Scene scene3 = new Scene(root);
 
