@@ -42,7 +42,7 @@ public class QuestionBank {
         return questionList;
     }
 
-    public void setQuestionList(List<Question> questionList) {
-        this.questionList = (ArrayList<Question>) questionList;
+    public void setQuestionList(ArrayList<Question> questionList) {
+        this.questionList = questionList;
     }
 }

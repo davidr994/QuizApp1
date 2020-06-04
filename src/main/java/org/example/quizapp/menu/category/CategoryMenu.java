@@ -12,6 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import org.example.quizapp.QuizApplication;
 import org.example.quizapp.controller.ControllerQuiz;
 import org.example.quizapp.dbUtil.Database;
 import org.example.quizapp.menu.questions.Question;
@@ -64,7 +65,7 @@ public class CategoryMenu implements Initializable {
         // --------- Arraylist --------
         ArrayList<String> categoryList = new ArrayList<String>();
 
-        ArrayList<Question> quizQuestionList = new ArrayList<>();
+        List<Question> quizQuestionList = new ArrayList<>();
 
         Database database = new Database();
         QuestionBank questionBank = new QuestionBank();
@@ -114,7 +115,7 @@ public class CategoryMenu implements Initializable {
                         questionBank.loadCategoryQuestions(database.getStatement(), category);
                 }
 
-                quizQuestionList = (ArrayList<Question>) questionBank.getQuestionList();
+                quizQuestionList = questionBank.getQuestionList();
 
                 for (Question question: quizQuestionList) {
                         System.out.println("ID: " + question.getQuestion_id());
@@ -143,7 +144,7 @@ public class CategoryMenu implements Initializable {
                 Lable.setText(" ");
         }
 
-        @Override
+        @FXML
         public void initialize(URL location, ResourceBundle resources) {
                 statusHBox.setDisable(true);
 
@@ -170,15 +171,17 @@ public class CategoryMenu implements Initializable {
                 Stage stage3 = new Stage();
                 stage3.setTitle("Quiz");
 
-                FXMLLoader fxmlLoader = new FXMLLoader();
+                FXMLLoader fxmlLoader = new FXMLLoader(new File("src/main/java/org/example/quizapp/controller/quiz.fxml").toURI().toURL());
 
-                 AnchorPane root = (AnchorPane) fxmlLoader.load(new File("src/main/java/org/example/quizapp/controller/quiz.fxml").toURI().toURL());
-                //AnchorPane root = (AnchorPane)  fxmlLoader.load(getClass().getClassLoader().getResource("controller/quiz.fxml").openStream());
-                //AnchorPane root = (AnchorPane)  fxmlLoader.load();
+                AnchorPane root = (AnchorPane) fxmlLoader.load();
+
+                //FXMLLoader fxmlLoader = new FXMLLoader();
+                 //AnchorPane root = (AnchorPane) fxmlLoader.load(new File("src/main/java/org/example/quizapp/controller/quiz.fxml").toURI().toURL());
+                //AnchorPane root = (AnchorPane)  fxmlLoader.load(getClass().getResource("src/main/java/org/example/quizapp/controller/quiz.fxml").openStream());
+                //AnchorPane login = (AnchorPane) fxmlLoader.load();
 
                 ControllerQuiz controllerQuiz = fxmlLoader.getController();
                 controllerQuiz.setQuestions((ArrayList<Question>) quizQuestionList);
-
 
                 Scene scene3 = new Scene(root);
 
@@ -187,6 +190,8 @@ public class CategoryMenu implements Initializable {
                 stage3.show();
 
         }
+
+
 }
 
 

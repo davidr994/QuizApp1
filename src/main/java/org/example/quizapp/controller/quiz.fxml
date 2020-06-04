@@ -1,29 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<AnchorPane prefHeight="348.0" prefWidth="295.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.quizapp.controller.ControllerQuiz">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="479.0" prefWidth="295.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.quizapp.controller.ControllerQuiz">
    <children>
-      <Label fx:id="Question" alignment="CENTER" layoutX="97.0" layoutY="14.0" prefHeight="68.0" prefWidth="102.0" text="Question:">
+      <Label fx:id="Question" alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="14.0" prefHeight="185.0" prefWidth="283.0" text="Question:" wrapText="true">
          <font>
-            <Font name="System Bold Italic" size="24.0" />
+            <Font name="System Bold Italic" size="22.0" />
          </font>
       </Label>
-      <HBox alignment="CENTER" layoutX="35.0" layoutY="94.0" prefHeight="100.0" prefWidth="226.0" spacing="60.0">
-         <children>
-            <Button fx:id="YES" maxWidth="100.0" mnemonicParsing="false" onAction="#answerButton" prefHeight="40.0" prefWidth="100.0" text="YES" textFill="#0ab504">
-               <font>
-                  <Font size="19.0" />
-               </font></Button>
-            <Button fx:id="NO" maxWidth="100.0" mnemonicParsing="false" onAction="#answerButton" prefHeight="40.0" prefWidth="100.0" text="NO" textFill="#e80606">
-               <font>
-                  <Font size="19.0" />
-               </font></Button>
-         </children>
-      </HBox>
-      <Separator layoutX="17.0" layoutY="236.0" prefHeight="16.0" prefWidth="262.0" />
-      <HBox layoutX="27.0" layoutY="252.0" prefHeight="68.0" prefWidth="241.0" spacing="20.0">
+      <HBox alignment="CENTER" layoutX="17.0" layoutY="14.0" prefHeight="185.0" prefWidth="262.0" spacing="60.0" />
+      <Separator layoutX="20.0" layoutY="388.0" prefHeight="16.0" prefWidth="262.0" />
+      <HBox layoutX="31.0" layoutY="404.0" prefHeight="57.0" prefWidth="241.0" spacing="20.0">
          <children>
             <Label fx:id="questionCounter" prefHeight="22.0" prefWidth="165.0" text="1 - 100">
                <font>
@@ -46,6 +40,21 @@
             </VBox>
          </children>
       </HBox>
-      <HBox layoutX="20.0" layoutY="352.0" prefHeight="16.0" prefWidth="255.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <HBox fx:id="progressHBox" layoutX="20.0" layoutY="352.0" prefHeight="16.0" prefWidth="255.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Button fx:id="YES" layoutX="30.0" layoutY="340.0" maxWidth="100.0" mnemonicParsing="false" onAction="#answerButton" prefHeight="40.0" prefWidth="100.0" text="YES" textFill="#0ab504">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="NO" layoutX="161.0" layoutY="340.0" maxWidth="100.0" mnemonicParsing="false" onAction="#answerButton" prefHeight="40.0" prefWidth="100.0" text="NO" textFill="#e80606">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Button>
+      <Label fx:id="COMPLEMENT" layoutX="35.0" layoutY="240.0" prefHeight="49.0" prefWidth="226.0" wrapText="true">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
