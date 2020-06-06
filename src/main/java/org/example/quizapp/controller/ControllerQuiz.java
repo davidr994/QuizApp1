@@ -1,21 +1,26 @@
 package org.example.quizapp.controller;
 
-import javafx.collections.ObservableList;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import org.example.quizapp.menu.questions.Question;
-import org.example.quizapp.menu.questions.QuestionBank;
-
-import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 
 public class ControllerQuiz {
 
@@ -35,9 +40,6 @@ public class ControllerQuiz {
     private Label score;
 
     @FXML
-    private Label Highscore;
-
-    @FXML
     private HBox progressHBox;
 
     @FXML
@@ -54,7 +56,7 @@ public class ControllerQuiz {
 
 
     @FXML
-    void answerButton(ActionEvent event) {
+    void answerButton(ActionEvent event) throws IOException {
         Button clickedButton = (Button) event.getSource();
         if(clickedButton.getId().equals("YES")) {
             pickedAnswer = true;
@@ -80,8 +82,10 @@ public class ControllerQuiz {
         if(answer == pickedAnswer) {
             if(complement != null) {
                 COMPLEMENT.setText("Correct: " + complement);
+                currentScore = currentScore+1;
             } else {
                 COMPLEMENT.setText("Correct!");
+                currentScore = currentScore+1;
             }
         } else {
             if (complement != null ) {
@@ -92,7 +96,7 @@ public class ControllerQuiz {
         }
     }
 
-    private void nextQuestion() {
+    private void nextQuestion() throws IOException {
         if(currentQuestionNumber <= questionCount -1) {
             Question.setText(questionList.get(currentQuestionNumber).getQuestion_text());
             updateUi();
@@ -103,23 +107,32 @@ public class ControllerQuiz {
 
     private void updateUi () {
         score.setText("Score: " + currentScore);
-        questionCounter.setText(" " + (currentQuestionNumber + 1) + " / " + questionCount);
+        questionCounter.setText(" " + (currentQuestionNumber +1) + " / " + questionCount);
 
         double progressHBoxWidth = (progressHBox.getWidth() / questionCount);
         progressHBox.getChildren().add(new Rectangle(progressHBoxWidth, 20, Color.YELLOW));
     }
 
-    private void restart () {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    private void restart () throws IOException {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Congratulations");
         alert.setHeaderText("You finished the quiz");
         alert.setContentText("New Game?");
-        alert.showAndWait();
 
         currentQuestionNumber = 0;
         currentScore = 0;
         progressHBox.getChildren().clear();
         COMPLEMENT.setText(" ");
+
+
+        Optional<ButtonType> option = alert.showAndWait();
+
+        if(option.get() == ButtonType.OK) {
+            updateUi();
+            Question.setText(questionList.get(currentQuestionNumber).getQuestion_text());
+        } else if (option.get() == ButtonType.CANCEL) {
+            Platform.exit();
+        }
     }
 
     //methods

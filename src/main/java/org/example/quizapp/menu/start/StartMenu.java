@@ -33,10 +33,6 @@ public class StartMenu {
         Platform.exit();
     }
 
-    @FXML
-    void scoreButton(ActionEvent event) {
-        System.out.println("score");
-    }
 
     private void goToCategoryOverview() throws IOException {
 
@@ -54,6 +50,7 @@ public class StartMenu {
         stage2.show();
 
     }
+
 }
 
 

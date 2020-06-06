@@ -31,11 +31,6 @@
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <Label fx:id="Highscore" text="Highscore: 0">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
                </children>
             </VBox>
          </children>
